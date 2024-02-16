@@ -4,8 +4,8 @@ import requests
 
 
 def main():
-    if len(sys.argv) != 5:
-        sys.exit("Usage: downloader.py -b <board> -n <thread_number>")
+    # if len(sys.argv) != 5:
+    #     sys.exit("Usage: 4down.py -b <board> -n <thread_number>")
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-b', help="Board for the thread.")
@@ -19,9 +19,6 @@ def main():
     thread = get_response(url)
 
     process(args.b, thread)
-    # for post in thread['posts']:
-    #     # if 'filename' in post:
-    #         print(post['filename'], post['ext'])
 
 
 def process(board: str, thread: str):
