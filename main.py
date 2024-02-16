@@ -1,4 +1,3 @@
-import py8chan
 import argparse
 import sys
 import requests
@@ -15,10 +14,19 @@ def main():
     parser.add_argument('--number', help="Thread number.")
     args = parser.parse_args()
 
-    board = py8chan.Board(args.b)
-    thread = py8chan.Board(args.n)
 
-    # print(prep_url(args.b, args.n))
+    url = prep_url(args.b, args.n)
+    # print(url)
+    get_response(url)
+
+
+def get_response(url):
+    r = requests.get(url)
+    if r.ok:
+        response_dict = r.json()
+    else:
+        sys.exit("Bad response.")
+    print(response_dict)
 
 
 def prep_url(board: str, n: str) -> str:
